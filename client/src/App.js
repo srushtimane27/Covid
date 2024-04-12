@@ -8,6 +8,7 @@ const App = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
   console.log(selectedCountry, "selectedCountry")
   const [covidData, setCovidData] = useState({});
+  const[disable, setDisable] = useState(true)
 
   const options = {
     method: 'GET',
@@ -54,13 +55,19 @@ const App = () => {
   }
 
   useEffect(() => {
+    if(selectedCountry){
+      setDisable(false)
+    }
+  })
+
+  useEffect(() => {
     getCountries();
   }, []);
 
   return (
     <div className='App'>
       <div>
-        <h1>Covid-19 Worldwide</h1>
+        <h1>Covid-19 Cases Worldwide</h1>
         <label>Select Country : </label>
         <select onChange={handleChange} value={selectedCountry}>
           <option value="">Select a country</option>
@@ -69,8 +76,8 @@ const App = () => {
           ))}
         </select>
         <br />
-        <button onClick={fetchData}>Get Data</button>
-        <div>
+        <button className='button' onClick={fetchData}>Get Data</button>
+        <div >
           {covidData && (
             <div>
               <p>Continent: {covidData.continent}</p>

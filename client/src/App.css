@@ -3,13 +3,18 @@
   background-color: azure;
   height: 750px;
 }
-
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
+.button{
+  width: 90px;
+  height: 40px;
+  margin-top: 20px;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
