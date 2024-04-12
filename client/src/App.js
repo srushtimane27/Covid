@@ -8,7 +8,7 @@ const App = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
   console.log(selectedCountry, "selectedCountry")
   const [covidData, setCovidData] = useState({});
-  const[disable, setDisable] = useState(true)
+  
 
   const options = {
     method: 'GET',
@@ -54,11 +54,6 @@ const App = () => {
     }
   }
 
-  useEffect(() => {
-    if(selectedCountry){
-      setDisable(false)
-    }
-  })
 
   useEffect(() => {
     getCountries();
@@ -82,8 +77,9 @@ const App = () => {
             <div>
               <p>Continent: {covidData.continent}</p>
               <p>Population: {covidData.population}</p>
-              <p>Day: {covidData.day}</p>
-              <p>Active Cases: {covidData.cases?.active}</p>
+              <p>Total Cases: {covidData.cases?.active}</p>
+              <p>Total Deaths: {covidData.deaths?.total}</p>
+              <p>Total Recovered: {covidData.cases?.recovered}</p>
             </div>
           )}
         </div>
